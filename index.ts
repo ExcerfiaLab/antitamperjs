@@ -7,7 +7,7 @@ import { AntiTamper } from '@/tamper'
 consola.level = LogLevels.debug
 
 async function boot() {
-	consola.info('Booting Terra Tamper v1.0')
+	consola.info('Booting AntiTamperJS v1.0')
 
 	const path = await consola.prompt('Enter path to .js file:', {
 		type: 'text'

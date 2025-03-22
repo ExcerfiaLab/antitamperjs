@@ -1,11 +1,11 @@
-import { WrappedFunctionDeclaration } from '@/tamper/analyzer/decl/decl.function'
-import { WrappedStatement } from '@/tamper/api/api.statement'
+import { WrappedFunctionDeclaration } from '@/ast/analyzer/decl/decl.function'
+import { WrappedStatement } from '@/ast/api/api.statement'
 import {
 	ExpBinaryOperator,
 	JsExpBinary
-} from '@/tamper/codegen/node/exp/exp.binary'
-import { JsFnDecl } from '@/tamper/codegen/node/fn/fn.class'
-import { JsStmtReturn } from '@/tamper/codegen/node/stmt/stmt.return'
+} from '@/ast/codegen/node/exp/exp.binary'
+import { JsFnDecl } from '@/ast/codegen/node/fn/fn.class'
+import { JsStmtReturn } from '@/ast/codegen/node/stmt/stmt.return'
 import {
 	transform,
 	type FunctionDeclaration,

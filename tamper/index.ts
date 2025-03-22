@@ -1,9 +1,9 @@
 import consola from 'consola'
 
 import { parse, type Statement } from '@swc/core'
-import { Analyzer } from './analyzer'
+import { Analyzer } from '../ast/analyzer'
 import { Transformer } from '@/tamper/transformer'
-import type { WrappedStatement } from '@/tamper/api/api.statement'
+import type { WrappedStatement } from '@/ast/api/api.statement'
 import { writeFile } from 'node:fs'
 
 export class AntiTamper {
