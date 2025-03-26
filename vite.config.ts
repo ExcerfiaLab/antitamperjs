@@ -33,7 +33,7 @@ export default defineConfig({
 	build: {
 		target: 'node22',
 		lib: {
-			entry: resolve(__dirname, './index.ts'),
+			entry: resolve(__dirname, './src/index.ts'),
 			name,
 			fileName: 'index',
 			formats: ['es']
@@ -50,7 +50,7 @@ export default defineConfig({
 	},
 	resolve: {
 		alias: {
-			'@': resolve(__dirname, './')
+			'@': resolve(__dirname, './src')
 		}
 	}
 })

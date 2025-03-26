@@ -5,19 +5,23 @@ import { Analyzer } from '../ast/analyzer'
 import { Transformer } from '@/tamper/transformer'
 import type { WrappedStatement } from '@/ast/api/api.statement'
 import { writeFile } from 'node:fs'
+import type { TamperTarget } from '@/types/enum/enum.target'
 
 export class AntiTamper {
-	constructor(private readonly code: string) {}
+	constructor(
+		private readonly code: string,
+		private readonly target: TamperTarget
+	) {}
 
-	async tamper() {
+	async execute() {
 		const parsed = await parse(this.code)
 
 		const analyzer = new Analyzer(parsed)
-		const wrappedStatements = [...analyzer.analyze()]
+		const wrappedStatements = Array.from(
+			analyzer.analyze()
+		) as WrappedStatement<Statement>[]
 
-		const transformer = new Transformer(
-			wrappedStatements as WrappedStatement<Statement>[]
-		)
+		const transformer = new Transformer(wrappedStatements, this.target)
 		const transformed = await transformer.transform()
 
 		writeFile('out.js', transformed.code, () => {})

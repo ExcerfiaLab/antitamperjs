@@ -1,6 +1,6 @@
 import { FunctionDeclarationAnalyzer } from '@/ast/analyzer/decl/decl.function'
 import { VariableDeclarationAnalyzer } from '@/ast/analyzer/decl/decl.variable'
-import { AstAnalyzer, AstFlag } from '@/ast/api/api.analyzer'
+import { AstAnalyzer } from '@/ast/api/api.analyzer'
 import { WrappedStatement } from '@/ast/api/api.statement'
 import type { Declaration } from '@swc/core'
 
@@ -17,7 +17,7 @@ export class DeclarationAnalyzer extends AstAnalyzer<Declaration> {
 			case 'VariableDeclaration':
 				return this.varDeclAnalyzer.analyze(declaration)
 			default:
-				return new WrappedStatement(declaration, AstFlag.Readonly)
+				return new WrappedStatement(declaration)
 		}
 	}
 }

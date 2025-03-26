@@ -6,6 +6,7 @@ import {
 } from '@/ast/codegen/node/exp/exp.binary'
 import { JsFnDecl } from '@/ast/codegen/node/fn/fn.class'
 import { JsStmtReturn } from '@/ast/codegen/node/stmt/stmt.return'
+import type { TamperTarget } from '@/types/enum/enum.target'
 import {
 	transform,
 	type FunctionDeclaration,
@@ -15,7 +16,10 @@ import {
 import consola from 'consola'
 
 export class Transformer {
-	constructor(private readonly stmts: WrappedStatement[]) {}
+	constructor(
+		private readonly stmts: WrappedStatement[],
+		private readonly target: TamperTarget
+	) {}
 
 	private build(statements: Statement[]): Program {
 		return {
@@ -74,9 +78,9 @@ export class Transformer {
 	}
 
 	private debugInfo() {
-		for (const wrapped of this.stmts.filter(x => x.isModifiable)) {
+		for (const wrapped of this.stmts) {
 			const unwrapped = wrapped.unwrap()
-			consola.debug('Is modifiable:', unwrapped.type)
+			consola.debug('Is:', unwrapped.type)
 			if (wrapped instanceof WrappedFunctionDeclaration) {
 				consola.debug('Fn:')
 				consola.debug('-> Identifier:', wrapped.identifier.name)

@@ -2,12 +2,6 @@ import { WrappedStatement } from '@/ast/api/api.statement'
 import { setMemoryElement } from '@/ast/utils/utils.memory'
 import type { Node } from '@swc/core'
 
-export enum AstFlag {
-	None = 0,
-	Readonly = 1,
-	Modifiable = 2
-}
-
 export abstract class AstAnalyzer<T extends Node> {
 	constructor() {
 		setMemoryElement(this.constructor, this)

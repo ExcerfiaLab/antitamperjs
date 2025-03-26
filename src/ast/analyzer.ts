@@ -1,6 +1,5 @@
 import { DeclarationAnalyzer } from '@/ast/analyzer/decl/decl.analyzer'
 import { StatementAnalyzer } from '@/ast/analyzer/stmt/stmt.analyzer'
-import { AstFlag } from '@/ast/api/api.analyzer'
 import { WrappedStatement } from '@/ast/api/api.statement'
 import type { ModuleItem, Program, Statement } from '@swc/core'
 
@@ -23,7 +22,7 @@ export class Analyzer {
 			case 'ExportAllDeclaration':
 				throw new Error("Not implemented module item's")
 			default:
-				return new WrappedStatement(statement, AstFlag.Readonly)
+				return new WrappedStatement(statement)
 		}
 	}
 

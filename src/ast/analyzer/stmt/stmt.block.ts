@@ -1,6 +1,6 @@
 import { DeclarationAnalyzer } from '@/ast/analyzer/decl/decl.analyzer'
 import { StatementAnalyzer } from '@/ast/analyzer/stmt/stmt.analyzer'
-import { AstAnalyzer, AstFlag } from '@/ast/api/api.analyzer'
+import { AstAnalyzer } from '@/ast/api/api.analyzer'
 import { WrappedStatement } from '@/ast/api/api.statement'
 import type { BlockStatement, Node, Statement } from '@swc/core'
 
@@ -23,11 +23,15 @@ export class WrappedBlockStatement extends WrappedStatement<BlockStatement> {
 					analyzed = this.statementAnalyzer.analyze(stmt)
 					break
 				default:
-					analyzed = new WrappedStatement(stmt, AstFlag.Readonly)
+					analyzed = new WrappedStatement(stmt)
 					break
 			}
 			this.stmts.push(analyzed)
 		}
+	}
+
+	get statements() {
+		return this.stmts
 	}
 
 	getStatements<Z extends Node = Statement, T = WrappedStatement<Z>>(

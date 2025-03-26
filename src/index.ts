@@ -3,6 +3,7 @@ import 'dotenv/config'
 import consola, { LogLevels } from 'consola'
 import { stat, readFile } from 'node:fs/promises'
 import { AntiTamper } from '@/tamper'
+import type { TamperTarget } from '@/types/enum/enum.target'
 
 consola.level = LogLevels.debug
 
@@ -18,10 +19,17 @@ async function boot() {
 		return consola.error(`File ${path} does not exist`)
 	}
 
-	const text = await readFile(path, 'utf-8')
-	const antiTamper = new AntiTamper(text)
+	const target = await consola.prompt('Enter your target: ', {
+		default: 'node',
+		options: ['node', 'browser'],
+		type: 'select',
+		initial: 'node'
+	})
 
-	antiTamper.tamper()
+	const text = await readFile(path, 'utf-8')
+	const antiTamper = new AntiTamper(text, target as TamperTarget)
+
+	antiTamper.execute()
 }
 
 boot()

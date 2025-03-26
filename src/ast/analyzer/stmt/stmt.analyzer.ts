@@ -1,5 +1,5 @@
 import { BlockStatementAnalyzer } from '@/ast/analyzer/stmt/stmt.block'
-import { AstAnalyzer, AstFlag } from '@/ast/api/api.analyzer'
+import { AstAnalyzer } from '@/ast/api/api.analyzer'
 import { WrappedStatement } from '@/ast/api/api.statement'
 import type { Statement } from '@swc/core'
 
@@ -11,7 +11,7 @@ export class StatementAnalyzer extends AstAnalyzer<Statement> {
 			case 'BlockStatement':
 				return this.blockStmtAnalyzer.analyze(statement)
 			default:
-				return new WrappedStatement(statement, AstFlag.Readonly)
+				return new WrappedStatement(statement)
 		}
 	}
 }

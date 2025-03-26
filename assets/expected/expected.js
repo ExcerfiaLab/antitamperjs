@@ -16,14 +16,17 @@ function virtualized_randInt(min, max) {
 		0x0,
 		0xfa,
 		0xff,
-		'EXP_FN_0x0001',
+		'EXP_FN_0x0001', // -> call Math.ceil
 		min,
 		0xa,
 		0x1,
 		0xfa,
 		0xff,
-		'EXP_FN_0x0002',
+		'EXP_FN_0x0002', // -> call Math.floor
 		max,
+		0xff,
+		'EXP_FN_0x0003', // -> call Math.random
+
 		0xaf
 	)
 	/**
