@@ -6,6 +6,7 @@ import { Transformer } from '@/tamper/transformer'
 import type { WrappedStatement } from '@/ast/api/api.statement'
 import { writeFile } from 'node:fs'
 import type { TamperTarget } from '@/types/enum/enum.target'
+import { SourceHelper } from '@/tamper/source'
 
 export class AntiTamper {
 	constructor(
@@ -21,7 +22,11 @@ export class AntiTamper {
 			analyzer.analyze()
 		) as WrappedStatement<Statement>[]
 
-		const transformer = new Transformer(wrappedStatements, this.target)
+		const transformer = new Transformer(
+			wrappedStatements,
+			this.target,
+			new SourceHelper(this.code)
+		)
 		const transformed = await transformer.transform()
 
 		writeFile('out.js', transformed.code, () => {})

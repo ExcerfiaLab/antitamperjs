@@ -3,10 +3,10 @@ import { WrappedFn } from '@/ast/analyzer/decl/decl.function'
 import { WrappedVariableDeclaration } from '@/ast/analyzer/decl/decl.variable'
 import type { AnyJsFunction } from '@/types'
 
-class TracedFn {
+export class TracedFn {
 	variables: WrappedVariableDeclaration[] = []
 	fns: WrappedFn<AnyJsFunction>[] = []
-	constructor(private readonly fn: WrappedFn<AnyJsFunction>) {}
+	constructor(readonly fn: WrappedFn<AnyJsFunction>) {}
 
 	trace() {
 		const crawledVariables = Array.from(
