@@ -6,7 +6,7 @@ settings:
 
 patchedDependencies:
   '@swc/types':
-    hash: db7271af34db529c78573f8ab163329f8b674d51239caf623ab565d0a40042f0
+    hash: 195af1bbbec2f0f5a5a79734ecd8f760e380d5672bee0fe0ea524c34a423c68f
     path: patches/@swc__types.patch
 
 importers:
@@ -812,7 +812,7 @@ snapshots:
   '@swc/core@1.11.11':
     dependencies:
       '@swc/counter': 0.1.3
-      '@swc/types': 0.1.19(patch_hash=db7271af34db529c78573f8ab163329f8b674d51239caf623ab565d0a40042f0)
+      '@swc/types': 0.1.19(patch_hash=195af1bbbec2f0f5a5a79734ecd8f760e380d5672bee0fe0ea524c34a423c68f)
     optionalDependencies:
       '@swc/core-darwin-arm64': 1.11.11
       '@swc/core-darwin-x64': 1.11.11
@@ -827,7 +827,7 @@ snapshots:
 
   '@swc/counter@0.1.3': {}
 
-  '@swc/types@0.1.19(patch_hash=db7271af34db529c78573f8ab163329f8b674d51239caf623ab565d0a40042f0)':
+  '@swc/types@0.1.19(patch_hash=195af1bbbec2f0f5a5a79734ecd8f760e380d5672bee0fe0ea524c34a423c68f)':
     dependencies:
       '@swc/counter': 0.1.3
 

@@ -23,6 +23,7 @@ export class JsStringLiteral implements BNode<StringLiteral> {
 			span: SPAN,
 			type: 'StringLiteral',
 			value: this.value,
+			raw: `"${this.value}"`,
 			ctxt: 0
 		}
 	}

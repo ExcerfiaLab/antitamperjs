@@ -1,7 +1,9 @@
 import type {
 	ArrayPattern,
+	ArrowFunctionExpression,
 	AssignmentPattern,
 	BindingIdentifier,
+	FunctionDeclaration,
 	ObjectPattern,
 	RestElement
 } from '@swc/core'
@@ -12,3 +14,5 @@ export type Parameter =
 	| RestElement
 	| ObjectPattern
 	| AssignmentPattern
+
+export type AnyJsFunction = ArrowFunctionExpression | FunctionDeclaration

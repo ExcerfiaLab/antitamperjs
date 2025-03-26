@@ -1,11 +1,14 @@
-import { DeclaratorAnalyzer } from '@/ast/analyzer/decl/declarator/declarator.analyzer'
+import {
+	DeclaratorAnalyzer,
+	WrappedDeclarator
+} from '@/ast/analyzer/decl/declarator/declarator.analyzer'
 import { AstAnalyzer } from '@/ast/api/api.analyzer'
 import { WrappedStatement } from '@/ast/api/api.statement'
-import type { VariableDeclaration, VariableDeclarator } from '@swc/core'
+import type { VariableDeclaration } from '@swc/core'
 
 export class WrappedVariableDeclaration extends WrappedStatement<VariableDeclaration> {
 	private readonly declaratorAnalyzer = new DeclaratorAnalyzer()
-	declarators: WrappedStatement<VariableDeclarator>[] = []
+	declarators: WrappedDeclarator[] = []
 
 	constructor(statement: VariableDeclaration) {
 		super(statement)

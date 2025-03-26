@@ -1,4 +1,5 @@
-/** ABSOLUTELY NOTHING */
-const t = new Function('test', 'return test')
+function add(a, b) {
+	return a + b
+}
 
-console.log(t(4))
+add(1, 4)
